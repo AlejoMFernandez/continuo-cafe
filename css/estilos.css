@@ -609,12 +609,21 @@ html.lado-b .disco__brillo { opacity: .5; }
   .hero__sub { display: none; }
 }
 
-/* foto del plato: funda que se apoya sobre el tocadiscos (desktop) */
-.td__funda { position: absolute; left: 5%; top: 5%; width: 82%; aspect-ratio: 1; z-index: 5; margin: 0; background: var(--papel-2); box-shadow: 0 30px 60px -20px rgba(20, 20, 20, .6); opacity: 0; transform: translate(-6%, 8%) rotate(-4deg) scale(.94); transition: opacity .3s, transform .5s var(--ease-o); pointer-events: none; overflow: hidden; }
-.td__funda.ver { opacity: 1; transform: none; }
-.td__funda img { width: 100%; height: 100%; object-fit: cover; }
-.td__funda figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 14px 16px; background: var(--vinilo); color: var(--papel); display: flex; justify-content: space-between; gap: 12px; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; }
-.td__funda figcaption b { font-weight: 500; color: var(--rosa); letter-spacing: 0; }
+/* foto del plato: aparece al lado, en la línea del producto (desktop) */
+.carta__panel { position: relative; }
+.it-foto { display: none; }
+@media (min-width: 1024px) and (hover: hover) {
+  .it-foto { display: block; position: absolute; left: 0; top: 0; z-index: 6; width: 132px; height: 132px; border-radius: 6px; transform-origin: 0 100%; overflow: hidden; background: var(--fondo-2); box-shadow: 0 14px 30px -10px rgba(20, 20, 20, .45); pointer-events: none; opacity: 0; scale: .9; translate: 0 6px; transition: opacity .12s, scale .18s var(--ease-o), translate .18s var(--ease-o); }
+  .it-foto.mueve { transition: opacity .12s, scale .18s var(--ease-o), transform .18s var(--ease-o); }
+  .it-foto.ver { opacity: 1; scale: 1; translate: 0 0; }
+}
+.it-foto img, .foto-pop__caja img { opacity: 0; transition: opacity .2s; }
+.it-foto img { width: 100%; height: 100%; object-fit: cover; }
+.it-foto img.lista, .foto-pop__caja img.lista { opacity: 1; }
+/* cargando: brillo que pasa, nunca otra foto */
+.it-foto.cargando::after, .foto-pop__caja.cargando::after { content: ''; position: absolute; inset: 0; background: linear-gradient(100deg, transparent 30%, rgba(255, 255, 255, .5) 50%, transparent 70%) var(--fondo-2); background-size: 220% 100%; animation: brillo 1s linear infinite; }
+.foto-pop__caja.cargando::after { bottom: auto; aspect-ratio: 1; }
+@keyframes brillo { from { background-position: 120% 0; } to { background-position: -120% 0; } }
 .it__ver { display: none; }
 .it__mini-btn { all: unset; grid-row: span 2; align-self: start; cursor: zoom-in; position: relative; width: 60px; height: 60px; }
 .it__mini-btn .it__mini { width: 60px; height: 60px; }

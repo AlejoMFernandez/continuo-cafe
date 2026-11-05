@@ -38,7 +38,7 @@
 <link rel="preload" as="image" imagesrcset="img/f/hero-biblio-cel-600.webp 600w" imagesizes="270px" media="(max-width: 899px)">
 <link rel="preload" as="image" imagesrcset="img/f/hero-biblio-560.webp 560w, img/f/hero-biblio-1000.webp 1000w" imagesizes="500px" media="(min-width: 900px)">
 <link rel="stylesheet" href="kit/kit.css?v=1">
-<link rel="stylesheet" href="css/estilos.css?v=2">
+<link rel="stylesheet" href="css/estilos.css?v=3">
 </head>
 <body>
 
@@ -172,10 +172,6 @@
             </div>
             <img class="td__brillo" src="img/vinilo-brillo.svg" alt="" width="1000" height="1000" draggable="false">
           </div>
-          <figure class="td__funda" data-td-funda aria-hidden="true">
-            <img alt="" data-td-foto width="640" height="640" draggable="false">
-            <figcaption><span data-td-nom></span><b data-td-precio></b></figcaption>
-          </figure>
           <div class="td__brazo" data-td-brazo role="slider" tabindex="0" aria-label="Brazo del tocadiscos: elegí la pista" aria-valuemin="1" aria-valuemax="4" aria-valuenow="1">
             <img src="img/brazo.svg" alt="" width="300" height="640" draggable="false">
           </div>
@@ -186,6 +182,7 @@
       </div>
 
       <div class="carta__panel rv">
+        <div class="it-foto" data-it-foto aria-hidden="true" data-kit-ph="no"><img alt="" width="240" height="240" data-kit-ph="no"></div>
         <div id="carta-kit" class="carta-kit" data-kit="carta" data-kit-categorias="cafe,frias,salados,dulces"></div>
         <p class="carta__qr">También está en <a href="carta/">/carta</a>, la que abre el QR de las mesas.</p>
       </div>
@@ -306,7 +303,7 @@
   <div class="foto-pop__fondo" data-foto-cerrar></div>
   <div class="foto-pop__caja">
     <button type="button" class="foto-pop__x" data-foto-cerrar aria-label="Cerrar foto"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
-    <img alt="" data-foto-img width="640" height="640">
+    <img alt="" data-foto-img width="640" height="640" data-kit-ph="no">
     <div class="foto-pop__pie"><strong data-foto-nom></strong><span data-foto-precio></span></div>
   </div>
 </div>
@@ -325,6 +322,6 @@
   </div>
 </footer>
 
-<script type="module" src="js/main.js?v=2"></script>
+<script type="module" src="js/main.js?v=3"></script>
 </body>
 </html>

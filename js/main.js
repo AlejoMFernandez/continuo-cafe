@@ -332,10 +332,6 @@ const ANG_REPOSO = -26;
 const td = $('[data-tocadiscos]');
 const tdBrazo = $('[data-td-brazo]');
 const tdPistas = $('[data-td-pistas]');
-const tdLabel = $('[data-td-funda]');
-const tdNom = $('[data-td-nom]');
-const tdPrecio = $('[data-td-precio]');
-const tdFoto = $('[data-td-foto]');
 let cartaEl = null, cats = [], actual = 0;
 
 function setBrazo(ang) { tdBrazo?.style.setProperty('--ang', ang + 'deg'); }
@@ -435,23 +431,53 @@ if (td && io) {
     setBrazo(e.isIntersecting ? (ANG[actual] ?? 0) : ANG_REPOSO);
   }, { threshold: 0.4 }).observe(td);
 }
-// hover en un plato: su foto aparece en la etiqueta del disco
-let rafFoto = 0, fotoAct = '';
+// hover en un plato: su foto aparece al lado, en la misma línea (el tocadiscos queda decorativo)
+const itFoto = $('[data-it-foto]');
+const itFotoImg = itFoto && $('img', itFoto);
+let rafFoto = 0, fotoAct = '', itAct = null;
+// carga una foto sin mostrar nunca la anterior: hasta que llega, se ve el "cargando"
+function cargarEn(img, caja, src) {
+  caja.classList.add('cargando');
+  img.classList.remove('lista');
+  img.removeAttribute('src');
+  img.dataset.quiere = src;
+  const pre = new Image();
+  pre.onload = () => { if (img.dataset.quiere !== src) return; img.src = src; img.classList.add('lista'); caja.classList.remove('cargando'); };
+  pre.onerror = pre.onload;
+  pre.src = src;
+}
+let precargado = false;
+function precargarFotos() {
+  if (precargado) return; precargado = true;
+  $$('#carta-kit .kit-item[data-photo]').forEach((it) => { const i = new Image(); i.src = thumb(it.dataset.photo); });
+}
+$('#carta')?.addEventListener('pointerenter', precargarFotos, { once: true });
+function ubicarFoto(it) {
+  // sale justo arriba del nombre del plato, como una etiqueta
+  const base = itFoto.parentElement.getBoundingClientRect();
+  const r = ($('.it__nom', it) || it).getBoundingClientRect();
+  const w = itFoto.offsetWidth || 132;
+  itFoto.style.transform = `translate(${Math.round(r.left - base.left)}px, ${Math.round(r.top - base.top - w - 12)}px)`;
+}
 document.addEventListener('pointerover', (e) => {
-  if (e.pointerType !== 'mouse' || !desk()) return;
+  if (e.pointerType !== 'mouse' || !desk() || !itFoto) return;
   const it = e.target.closest('#carta-kit .kit-item');
+  if (it === itAct) return;
+  itAct = it;
   cancelAnimationFrame(rafFoto);
   rafFoto = requestAnimationFrame(() => {
     $$('#carta-kit .it.foco').forEach((x) => x !== it && x.classList.remove('foco'));
-    const src = it?.dataset.photo;
     if (it) it.classList.add('foco');
-    if (src) {
-      if (src !== fotoAct) { fotoAct = src; tdFoto.src = src; tdNom.textContent = $('.it__nom', it)?.childNodes[0]?.textContent?.trim() || ''; tdPrecio.textContent = $('[data-it-precio]', it)?.textContent || ''; }
-      tdLabel.classList.add('ver');
-    } else tdLabel?.classList.remove('ver');
+    const src = it?.dataset.photo ? thumb(it.dataset.photo) : '';
+    if (!src) { itFoto.classList.remove('ver'); return; }
+    const estaba = itFoto.classList.contains('ver');
+    itFoto.classList.toggle('mueve', estaba);
+    ubicarFoto(it);
+    if (src !== fotoAct) { fotoAct = src; cargarEn(itFotoImg, itFoto, src); }
+    itFoto.classList.add('ver');
   });
 });
-$('#carta-kit')?.addEventListener('pointerleave', () => { tdLabel?.classList.remove('ver'); $$('#carta-kit .it.foco').forEach((x) => x.classList.remove('foco')); });
+$('#carta-kit')?.addEventListener('pointerleave', () => { itAct = null; itFoto?.classList.remove('ver'); $$('#carta-kit .it.foco').forEach((x) => x.classList.remove('foco')); });
 
 function procesarCarta(el, categorias) {
   if (el.id === 'carta-kit') armarCarta(el, categorias || []);
@@ -595,7 +621,7 @@ const pop = $('[data-foto-pop]');
 let scrollPop = 0;
 function abrirFoto(it) {
   if (!pop || !it?.dataset.photo) return;
-  $('[data-foto-img]', pop).src = it.dataset.photo;
+  cargarEn($('[data-foto-img]', pop), $('.foto-pop__caja', pop), it.dataset.photo);
   $('[data-foto-nom]', pop).textContent = $('.it__nom', it)?.childNodes[0]?.textContent?.trim() || '';
   $('[data-foto-precio]', pop).textContent = $('[data-it-precio]', it)?.textContent || '';
   scrollPop = scrollY; pop.hidden = false; html.classList.add('pop-abierto');
