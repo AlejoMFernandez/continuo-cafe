@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Continuo · Café &amp; Música en Saavedra</title>
+<meta property="og:image" content="https://continuo-cafe.vercel.app/img/og.jpg?v=1">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:alt" content="Continuo: café, carta y noches de jazz en Saavedra">
+<meta property="og:title" content="Continuo · Café &amp; Música en Saavedra">
+<meta property="og:description" content="La carta, la agenda de noches con reserva y los discos que venden, en una web.">
+<meta property="og:url" content="https://continuo-cafe.vercel.app/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Continuo · Café &amp; Música">
+<meta property="og:locale" content="es_AR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://continuo-cafe.vercel.app/img/og.jpg?v=1">
+<meta name="description" content="Continuo · Café &amp; Música: café de especialidad, pastelería y vinilos en Machaín 3632, Saavedra. La carta, Continuo de Noche (jazz en vivo y DJ sets) con reserva y la batea de discos.">
+<meta name="theme-color" content="#F0EDE6">
+<link rel="icon" href="img/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="img/apple-touch.png">
+<script>
+  (function () {
+    var d = document.documentElement; d.classList.add('js');
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) d.classList.add('con-intro');
+    try {
+      var q = new URLSearchParams(location.search).get('lado');
+      if (q === 'b') d.classList.add('lado-b');
+    } catch (e) {}
+  })();
+</script>
+<link rel="preload" as="font" type="font/woff2" href="fonts/archivo-wdth.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="fonts/instrument-serif-italic.woff2" crossorigin>
+<link rel="stylesheet" href="css/fuentes.css?v=1" data-kit-fonts>
+<link rel="preload" as="image" href="img/vinilo.svg">
+<link rel="preload" as="image" imagesrcset="img/f/hero-biblio-cel-600.webp 600w" imagesizes="270px" media="(max-width: 899px)">
+<link rel="preload" as="image" imagesrcset="img/f/hero-biblio-560.webp 560w, img/f/hero-biblio-1000.webp 1000w" imagesizes="500px" media="(min-width: 900px)">
+<link rel="stylesheet" href="kit/kit.css?v=1">
+<link rel="stylesheet" href="css/estilos.css?v=1">
+</head>
+<body>
+
+<!-- ============ INTRO: cae la púa ============ -->
+<div class="intro" aria-hidden="true">
+  <div class="intro__marca">
+    <img class="intro__logo" src="img/logo.svg" alt="" width="1330" height="380">
+    <span class="intro__linea"></span>
+    <span class="intro__punto"></span>
+  </div>
+</div>
+
+<a class="saltar" href="#carta">Ir a la carta</a>
+
+<!-- ============ BARRA ============ -->
+<header class="barra" data-barra>
+  <div class="barra__in">
+    <a class="barra__logo" href="#inicio" aria-label="Continuo, inicio">
+      <img class="solo-a" src="img/wordmark.svg" alt="Continuo" width="770" height="150">
+      <img class="solo-b" src="img/wordmark-claro.svg" alt="" width="770" height="150">
+    </a>
+    <nav class="barra__nav" aria-label="Secciones">
+      <a href="#carta">Carta</a>
+      <a href="#noche">De noche</a>
+      <a href="#discos">Discos</a>
+      <a href="#llegar">Cómo llegar</a>
+    </nav>
+    <div class="lados" role="group" aria-label="Lado del disco">
+      <button type="button" class="lados__b" data-lado-btn="a" aria-pressed="true"><span class="lados__l">A</span><span class="lados__t">Día</span></button>
+      <button type="button" class="lados__b" data-lado-btn="b" aria-pressed="false"><span class="lados__l">B</span><span class="lados__t">Noche</span></button>
+    </div>
+    <button type="button" class="sel-btn" data-kit-open="carrito" aria-label="Tu selección">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5.2"/><circle cx="12" cy="12" r="1.6" class="lleno"/></svg>
+      <span class="sel-btn__n" data-sel-n hidden>0</span>
+    </button>
+    <button type="button" class="menu-btn" data-menu-abrir aria-label="Abrir menú" aria-expanded="false" aria-controls="menu">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h16M4 15h16"/></svg>
+    </button>
+  </div>
+</header>
+
+<div class="menu" id="menu" hidden>
+  <button type="button" class="menu__x" data-menu-cerrar aria-label="Cerrar menú"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  <nav class="menu__nav" aria-label="Menú">
+    <a href="#carta"><span>01</span>La carta</a>
+    <a href="#promos"><span>02</span>Promos</a>
+    <a href="#noche"><span>03</span>Continuo de Noche</a>
+    <a href="#discos"><span>04</span>La batea</a>
+    <a href="#llegar"><span>05</span>Cómo llegar</a>
+  </nav>
+  <img class="menu__disco" src="img/vinilo.svg" alt="" width="1000" height="1000">
+  <p class="menu__pie">Machaín 3632, Saavedra · <a href="https://www.instagram.com/continuo____/" target="_blank" rel="noopener">@continuo____</a></p>
+</div>
+
+<main>
+
+<!-- ============ HERO · el disco ============ -->
+<section class="hero" id="inicio" aria-label="Continuo">
+  <div class="hero__in">
+    <div class="hero__texto">
+      <div class="hero__lado solo-a">
+        <p class="kicker hero__kicker"><span class="m"><span>Café /// Pastelería /// Mucha música</span></span></p>
+        <h1 class="hero__t">
+          <span class="m"><span>Un café con</span></span>
+          <span class="m"><span>buena música,</span></span>
+          <span class="m"><span><em>siempre.</em></span></span>
+        </h1>
+        <span class="hero__linea" aria-hidden="true"></span>
+        <p class="hero__sub">Vinilos que eligen ustedes, pastelería de la casa y, algunas noches, jazz en vivo. Machaín 3632, Saavedra.</p>
+        <div class="hero__ctas">
+          <a class="btn btn--surco" href="#carta">Ver la carta</a>
+          <a class="btn btn--linea" href="#noche"><span class="solo-cel">De noche</span><span class="solo-desk">Qué suena esta semana</span></a>
+        </div>
+      </div>
+      <div class="hero__lado solo-b">
+        <p class="kicker hero__kicker"><span class="m"><span><i class="punto"></i>A veces abrimos de noche</span></span></p>
+        <h1 class="hero__t hero__t--b">
+          <span class="m"><span>Continuo</span></span>
+          <span class="m"><span><em>de Noche</em></span></span>
+        </h1>
+        <span class="hero__linea" aria-hidden="true"></span>
+        <p class="hero__sub">Jazz en vivo los jueves, DJ sets, cena y tragos. Elegí la fecha y guardate una mesa.</p>
+        <div class="hero__ctas">
+          <a class="btn btn--rec" href="#noche">Ver la agenda</a>
+          <a class="btn btn--linea" href="#carta">La carta</a>
+        </div>
+      </div>
+      <p class="hero__estado" data-estado><i class="punto"></i><span>Machaín 3632 · Saavedra</span></p>
+    </div>
+
+    <div class="hero__escena" aria-hidden="true">
+      <div class="disco" data-disco>
+        <div class="disco__gira">
+          <img class="disco__img solo-a" src="img/vinilo.svg" alt="" width="1000" height="1000" decoding="async">
+          <img class="disco__img solo-b" src="img/vinilo-b.svg" alt="" width="1000" height="1000" decoding="async">
+        </div>
+        <img class="disco__brillo" src="img/vinilo-brillo.svg" alt="" width="1000" height="1000">
+      </div>
+      <img class="brazo" src="img/brazo.svg" alt="" width="300" height="640">
+      <figure class="funda">
+        <picture class="solo-a">
+          <source media="(max-width: 899px)" srcset="img/f/hero-biblio-cel-600.webp" width="600" height="667">
+          <img src="img/f/hero-biblio-560.webp" srcset="img/f/hero-biblio-560.webp 560w, img/f/hero-biblio-1000.webp 1000w" sizes="(max-width: 899px) 270px, 500px" alt="" width="560" height="560" fetchpriority="high">
+        </picture>
+        <img class="solo-b" src="img/f/noche-vereda-720.webp" alt="" width="720" height="1280" loading="lazy" decoding="async">
+        <figcaption class="funda__lado"><span class="solo-a">Lado A · De día</span><span class="solo-b">Lado B · De noche</span></figcaption>
+      </figure>
+    </div>
+  </div>
+  <div class="hero__franja" data-franja>
+    <p class="franja__item"><i class="punto"></i><span>Martes a viernes 9:00 a 20:00 hs · sábados y domingos 9:30 a 20:00 hs</span></p>
+  </div>
+</section>
+
+<!-- ============ LA CARTA · el tocadiscos ============ -->
+<section class="sec carta" id="carta" aria-labelledby="carta-t">
+  <div class="cont">
+    <header class="sec__cab rv">
+      <p class="kicker">Lado A · Pista por pista</p>
+      <h2 class="sec__t" id="carta-t"><span class="m"><span>La carta</span></span></h2>
+      <span class="sec__linea" aria-hidden="true"></span>
+      <p class="sec__sub">Elegí una pista: café, frías, salados o dulces. Todo se puede pedir para pasar a buscar.</p>
+    </header>
+
+    <div class="carta__grid">
+      <div class="tocadiscos rv" data-tocadiscos>
+        <div class="td__plinto">
+          <div class="td__plato" data-td-plato>
+            <div class="td__gira">
+              <img src="img/vinilo.svg" alt="" width="1000" height="1000" loading="lazy" decoding="async" draggable="false">
+            </div>
+            <img class="td__brillo" src="img/vinilo-brillo.svg" alt="" width="1000" height="1000" draggable="false">
+            <div class="td__label" data-td-label aria-hidden="true">
+              <img alt="" data-td-foto width="240" height="240" draggable="false">
+            </div>
+          </div>
+          <div class="td__brazo" data-td-brazo role="slider" tabindex="0" aria-label="Brazo del tocadiscos: elegí la pista" aria-valuemin="1" aria-valuemax="4" aria-valuenow="1">
+            <img src="img/brazo.svg" alt="" width="300" height="640" draggable="false">
+          </div>
+          <span class="td__rpm" aria-hidden="true">33⅓</span>
+        </div>
+        <ol class="td__pistas" data-td-pistas aria-label="Pistas de la carta"></ol>
+        <p class="td__ayuda">Arrastrá el brazo o tocá una pista</p>
+      </div>
+
+      <div class="carta__panel rv">
+        <div id="carta-kit" class="carta-kit" data-kit="carta" data-kit-categorias="cafe,frias,salados,dulces"></div>
+        <p class="carta__qr">También está en <a href="carta/">/carta</a>, la que abre el QR de las mesas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROMOS · los simples ============ -->
+<section class="sec promos" id="promos" aria-labelledby="promos-t">
+  <div class="cont">
+    <header class="sec__cab sec__cab--fila rv">
+      <div>
+        <p class="kicker">Lado A · Los simples</p>
+        <h2 class="sec__t" id="promos-t"><span class="m"><span>Promos de <em>todos los días</em></span></span></h2>
+      </div>
+      <p class="sec__sub">Cuatro combos que no fallan. Sumalos y pasás a buscarlos.</p>
+    </header>
+    <div id="promos-kit" class="promos-kit" data-kit="carta" data-kit-categorias="promos" data-arrastre></div>
+  </div>
+</section>
+
+<!-- ============ LADO B · CONTINUO DE NOCHE ============ -->
+<section class="sec noche" id="noche" aria-labelledby="noche-t">
+  <div class="cont noche__grid">
+    <div class="noche__texto">
+      <header class="sec__cab rv">
+        <p class="kicker"><i class="punto"></i>Lado B</p>
+        <h2 class="sec__t" id="noche-t"><span class="m"><span>Continuo</span></span> <span class="m"><span><em>de Noche</em></span></span></h2>
+        <span class="sec__linea" aria-hidden="true"></span>
+        <p class="sec__sub">Jazz en vivo los jueves, DJ sets y pop-ups con amigos. Las noches con reserva se guardan desde acá.</p>
+      </header>
+      <ol class="tracklist" data-tracklist aria-label="Próximas fechas"><li class="tracklist__cargando">Cargando la agenda…</li></ol>
+    </div>
+    <div class="noche__fotos rv" data-arrastre>
+      <figure class="nf nf--1"><img src="img/f/noche-vereda-720.webp" alt="Banda de jazz tocando en la vereda de Continuo de noche" width="720" height="1280" loading="lazy" decoding="async" draggable="false"></figure>
+      <figure class="nf nf--2"><img src="img/f/noche-jazz-720.webp" alt="Jazz en la vereda de noche" width="720" height="1280" loading="lazy" decoding="async" draggable="false"></figure>
+      <figure class="nf nf--3"><img src="img/f/noche-saxo-720.webp" alt="Teclado y saxo en vivo" width="720" height="1280" loading="lazy" decoding="async" draggable="false"></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LA BATEA ============ -->
+<section class="sec batea" id="discos" aria-labelledby="batea-t">
+  <div class="cont batea__grid">
+    <header class="sec__cab rv">
+      <p class="kicker">Lado A · La batea</p>
+      <h2 class="sec__t" id="batea-t"><span class="m"><span>Discos que</span></span> <span class="m"><span><em>buscan casa</em></span></span></h2>
+      <span class="sec__linea" aria-hidden="true"></span>
+      <p class="sec__sub">Vendemos una parte de la colección. Pasá las fundas, separá el que te guste y lo retirás en el local.</p>
+      <figure class="batea__foto"><img src="img/f/batea-640.webp" alt="La batea de vinilos de Continuo" width="640" height="432" loading="lazy" decoding="async"></figure>
+    </header>
+    <div class="batea__caja rv">
+      <div id="batea-kit" class="batea-kit" data-kit="carta" data-kit-tienda="true" data-arrastre></div>
+      <div class="batea__madera" aria-hidden="true"></div>
+      <p class="batea__ayuda"><span class="solo-mouse">Arrastrá para pasar las fundas</span><span class="solo-dedo">Deslizá para pasar las fundas</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ USTEDES ELIGEN LA MÚSICA ============ -->
+<section class="sec ustedes" id="ustedes" aria-labelledby="ustedes-t">
+  <div class="cont">
+    <header class="sec__cab sec__cab--fila rv">
+      <div>
+        <p class="kicker">Lado A · Bonus track</p>
+        <h2 class="sec__t" id="ustedes-t"><span class="m"><span>Ustedes eligen</span></span> <span class="m"><span><em>la música</em></span></span></h2>
+      </div>
+      <p class="sec__sub">Las bibliotecas están a mano: sacás un disco, se lo das a la barra y suena.</p>
+    </header>
+    <div class="galeria" data-mazo>
+      <figure class="gal gal--1 rv"><img src="img/f/g-biblio-800.webp" srcset="img/f/g-biblio-800.webp 800w, img/f/g-biblio-1400.webp 1400w" sizes="(min-width: 900px) 50vw, 80vw" alt="La biblioteca de vinilos con la lámpara globo" width="800" height="602" loading="lazy" decoding="async" draggable="false"></figure>
+      <figure class="gal gal--2 rv"><img src="img/f/g-eligiendo-720.webp" alt="Alguien eligiendo un disco de los estantes" width="720" height="1280" loading="lazy" decoding="async" draggable="false"></figure>
+      <figure class="gal gal--3 rv"><img src="img/f/g-gente-800.webp" alt="Dos personas mirando discos" width="800" height="803" loading="lazy" decoding="async" draggable="false"></figure>
+      <figure class="gal gal--4 rv"><img src="img/f/g-barra-disco-800.webp" srcset="img/f/g-barra-disco-800.webp 800w, img/f/g-barra-disco-1400.webp 1400w" sizes="(min-width: 900px) 25vw, 80vw" alt="Un vinilo apoyado en la barra con flores" width="800" height="1000" loading="lazy" decoding="async" draggable="false"></figure>
+      <figure class="gal gal--5 rv"><img src="img/f/g-baristas-800.webp" alt="El equipo preparando bebidas en la barra" width="800" height="1000" loading="lazy" decoding="async" draggable="false"></figure>
+      <figure class="gal gal--6 rv"><img src="img/f/g-pasillo-800.webp" srcset="img/f/g-pasillo-800.webp 800w, img/f/g-pasillo-1400.webp 1400w" sizes="(min-width: 900px) 25vw, 80vw" alt="El pasillo del local con la barra y la biblioteca" width="800" height="1000" loading="lazy" decoding="async" draggable="false"></figure>
+    </div>
+    <p class="mazo__ayuda solo-cel">Deslizá la foto para ver la siguiente</p>
+  </div>
+</section>
+
+<!-- ============ CÓMO LLEGAR ============ -->
+<section class="sec llegar" id="llegar" aria-labelledby="llegar-t">
+  <div class="cont llegar__grid">
+    <div class="llegar__info rv">
+      <p class="kicker">Lado A · Cómo llegar</p>
+      <h2 class="sec__t" id="llegar-t"><span class="m"><span>Machaín 3632</span></span></h2>
+      <p class="sec__sub">Saavedra, Buenos Aires.</p>
+      <ul class="horarios" data-horarios>
+        <li data-d="2"><span>Martes</span><span>9:00 a 20:00 hs</span></li>
+        <li data-d="3"><span>Miércoles</span><span>9:00 a 20:00 hs</span></li>
+        <li data-d="4"><span>Jueves</span><span>9:00 a 20:00 hs</span></li>
+        <li data-d="5"><span>Viernes</span><span>9:00 a 20:00 hs</span></li>
+        <li data-d="6"><span>Sábado</span><span>9:30 a 20:00 hs</span></li>
+        <li data-d="0"><span>Domingo</span><span>9:30 a 20:00 hs</span></li>
+        <li data-d="1"><span>Lunes</span><span>Cerrado</span></li>
+      </ul>
+      <p class="llegar__nota">Las noches de Continuo de Noche abrimos más tarde: mirá la agenda.</p>
+      <a class="resena" href="https://www.google.com/maps/search/?api=1&amp;query=Continuo+Caf%C3%A9+%26+M%C3%BAsica+Mach%C3%A1in+3632+Saavedra" target="_blank" rel="noopener">
+        <span class="resena__n">4,8</span>
+        <span class="resena__d"><span class="estrellas" aria-hidden="true">★★★★★</span><span>397 reseñas en Google</span></span>
+        <span class="resena__f" aria-hidden="true">→</span>
+      </a>
+      <div class="llegar__ctas">
+        <a class="btn btn--surco" href="https://www.google.com/maps/dir/?api=1&amp;destination=Mach%C3%A1in+3632%2C+Saavedra%2C+Buenos+Aires" target="_blank" rel="noopener">Cómo llegar</a>
+        <a class="btn btn--linea" href="https://www.instagram.com/continuo____/" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+    <div class="llegar__mapa rv">
+      <iframe title="Mapa: Continuo, Machaín 3632, Saavedra" src="https://www.google.com/maps?q=Mach%C3%A1in+3632,+Saavedra,+Buenos+Aires&amp;z=16&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="pie">
+  <div class="cont">
+    <img class="pie__logo" src="img/logo-claro.svg" alt="Continuo · Café &amp; Música" width="1330" height="380" loading="lazy">
+    <span class="pie__linea" aria-hidden="true"></span>
+    <div class="pie__grid">
+      <p>Café, pastelería &amp; mucha música<br>Machaín 3632, Saavedra</p>
+      <p>Martes a viernes 9:00 a 20:00 hs<br>Sábados y domingos 9:30 a 20:00 hs</p>
+      <p><a href="https://www.instagram.com/continuo____/" target="_blank" rel="noopener">@continuo____</a><br><a href="carta/">La carta del QR</a></p>
+    </div>
+    <p class="pie__credito">Sitio desarrollado por <a href="https://alejomfernandez.com.ar" target="_blank" rel="noopener">Alejo Martín Fernández</a></p>
+  </div>
+</footer>
+
+<script type="module" src="js/main.js?v=1"></script>
+</body>
+</html>

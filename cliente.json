@@ -1,0 +1,639 @@
+{
+ "$schema": "https://raw.githubusercontent.com/AlejoMFernandez/kit-demos/main/docs/cliente.schema.json",
+ "id": "continuo-cafe",
+ "nombre": "Continuo",
+ "instagram": "continuo____",
+ "pais": "AR",
+ "idioma": "es",
+ "modo": "demo",
+ "demoVersion": 2,
+ "whatsapp": "https://ig.me/m/continuo____",
+ "prefijoPedido": "CT",
+ "supabase": {
+  "url": "",
+  "anonKey": ""
+ },
+ "marca": {
+  "logo": "img/logo.svg",
+  "logoPanel": "img/logo-claro.svg",
+  "logoClaro": "img/logo-claro.svg",
+  "isotipo": "img/isotipo.svg",
+  "favicon": "img/favicon.png",
+  "colores": {
+   "fondo": "#F0EDE6",
+   "superficie": "#FFFFFF",
+   "texto": "#141414",
+   "primario": "#7F0200",
+   "acento": "#B91722",
+   "borde": "#C9C3BA"
+  },
+  "fuentes": {
+   "titulos": "'Archivo Variable', 'Archivo', system-ui, sans-serif",
+   "texto": "'Archivo Variable', 'Archivo', system-ui, sans-serif",
+   "googleFonts": "Archivo:wdth,wght@62..125,100..900&family=Instrument+Serif:ital@0;1"
+  },
+  "estilo": {
+   "forma": "pildora",
+   "sombra": "suave",
+   "borde": "1px",
+   "mayusculas": true
+  }
+ },
+ "modulos": {
+  "carta": true,
+  "carrito": true,
+  "tienda": true,
+  "reservas": true,
+  "admin": true
+ },
+ "horarios": {
+  "mar": [
+   [
+    "09:00",
+    "20:00"
+   ]
+  ],
+  "mie": [
+   [
+    "09:00",
+    "20:00"
+   ]
+  ],
+  "jue": [
+   [
+    "09:00",
+    "20:00"
+   ]
+  ],
+  "vie": [
+   [
+    "09:00",
+    "20:00"
+   ]
+  ],
+  "sab": [
+   [
+    "09:30",
+    "20:00"
+   ]
+  ],
+  "dom": [
+   [
+    "09:30",
+    "20:00"
+   ]
+  ]
+ },
+ "reservas": {
+  "maxPersonas": 8,
+  "anticipacionMin": 60,
+  "diasAdelante": 60
+ },
+ "eventosTipos": [
+  {
+   "id": "jazz",
+   "nombre": "Jazz en vivo"
+  },
+  {
+   "id": "dj",
+   "nombre": "DJ set"
+  },
+  {
+   "id": "popup",
+   "nombre": "Pop-up y feria"
+  }
+ ],
+ "eventos": [
+  {
+   "id": "jazz-1105",
+   "tipo": "jazz",
+   "nombre": "Jazz en vivo · jueves 5/11",
+   "fecha": "2026-11-05",
+   "hora": "19:30",
+   "cupo": 40,
+   "precio": null,
+   "descripcion": "Ciclo de jazz con cena y tragos. 2×1 en tragos.",
+   "reserva": true
+  },
+  {
+   "id": "jazz-1112",
+   "tipo": "jazz",
+   "nombre": "Jazz en vivo · jueves 12/11",
+   "fecha": "2026-11-12",
+   "hora": "19:30",
+   "cupo": 40,
+   "precio": null,
+   "descripcion": "Ciclo de jazz con cena y tragos. 2×1 en tragos.",
+   "reserva": true
+  },
+  {
+   "id": "dj-1114",
+   "tipo": "dj",
+   "nombre": "DJ set · soul, funk & hip hop",
+   "fecha": "2026-11-14",
+   "hora": "20:30",
+   "cupo": 80,
+   "precio": null,
+   "descripcion": "Selección en vinilo, panchos y tragos. Sin reserva.",
+   "reserva": false
+  },
+  {
+   "id": "jazz-1119",
+   "tipo": "jazz",
+   "nombre": "Jazz en vivo · jueves 19/11",
+   "fecha": "2026-11-19",
+   "hora": "19:30",
+   "cupo": 40,
+   "precio": null,
+   "descripcion": "Ciclo de jazz con cena y tragos. 2×1 en tragos.",
+   "reserva": true
+  },
+  {
+   "id": "feria-1122",
+   "tipo": "popup",
+   "nombre": "Feria de vinilos y pop-up",
+   "fecha": "2026-11-22",
+   "hora": "16:00",
+   "cupo": 120,
+   "precio": null,
+   "descripcion": "Venta de vinilos y CDs, pastelería especial y barra de filtrados. Entrada libre.",
+   "reserva": false
+  },
+  {
+   "id": "jazz-1126",
+   "tipo": "jazz",
+   "nombre": "Jazz en vivo · jueves 26/11",
+   "fecha": "2026-11-26",
+   "hora": "19:30",
+   "cupo": 40,
+   "precio": null,
+   "descripcion": "Ciclo de jazz con cena y tragos. 2×1 en tragos.",
+   "reserva": true
+  }
+ ],
+ "pedidos": {
+  "salidas": [
+   "mercadopago",
+   "efectivo",
+   "whatsapp"
+  ],
+  "tipos": [
+   "retiro"
+  ],
+  "envio": 0,
+  "minimo": 0,
+  "sinPrecio": "a_confirmar",
+  "retiroHoy": {
+   "cadaMin": 15,
+   "prepMin": 10,
+   "asap": true
+  }
+ },
+ "pagos": {
+  "mercadopago": {
+   "endpoint": "https://kit-demos-amf.vercel.app/api/mp-preference",
+   "modo": "sandbox"
+  }
+ },
+ "cartaQR": {
+  "estilo": "marca",
+  "textos": {
+   "titulo": "Nuestra carta"
+  }
+ },
+ "carta": {
+  "categorias": [
+   {
+    "id": "cafe",
+    "nombre": "Café",
+    "orden": 1,
+    "bajada": "Espresso, con leche y filtrados."
+   },
+   {
+    "id": "frias",
+    "nombre": "Bebidas frías",
+    "orden": 2,
+    "bajada": "Jugos, limonadas e iced."
+   },
+   {
+    "id": "salados",
+    "nombre": "Salados",
+    "orden": 3,
+    "bajada": "Chipá, tostados, sándwiches y tartas."
+   },
+   {
+    "id": "dulces",
+    "nombre": "Dulces",
+    "orden": 4,
+    "bajada": "Pastelería de la casa. Consultá los especiales de fin de semana."
+   },
+   {
+    "id": "promos",
+    "nombre": "Promos",
+    "orden": 5,
+    "bajada": "Combos de todos los días."
+   },
+   {
+    "id": "discos",
+    "nombre": "La batea",
+    "orden": 6,
+    "tienda": true,
+    "bajada": "Vinilos de la colección de Continuo. Se separan desde acá y se retiran en el local."
+   }
+  ],
+  "productos": [
+   {
+    "id": "espresso",
+    "categoria": "cafe",
+    "nombre": "Espresso",
+    "precio": 3600
+   },
+   {
+    "id": "espresso-doble",
+    "categoria": "cafe",
+    "nombre": "Espresso doble",
+    "precio": 4000
+   },
+   {
+    "id": "americano",
+    "categoria": "cafe",
+    "nombre": "Americano",
+    "precio": 4000
+   },
+   {
+    "id": "cortado",
+    "categoria": "cafe",
+    "nombre": "Cortado",
+    "precio": 3900
+   },
+   {
+    "id": "capuchino",
+    "categoria": "cafe",
+    "nombre": "Capuchino",
+    "precio": 4500
+   },
+   {
+    "id": "flat-white",
+    "categoria": "cafe",
+    "nombre": "Flat white",
+    "precio": 4800,
+    "foto": "img/f/p-flatwhite-640.webp"
+   },
+   {
+    "id": "latte",
+    "categoria": "cafe",
+    "nombre": "Latte",
+    "precio": 4900,
+    "foto": "img/f/p-latte-640.webp"
+   },
+   {
+    "id": "caramel-latte",
+    "categoria": "cafe",
+    "nombre": "Caramel latte",
+    "precio": 5000
+   },
+   {
+    "id": "mocca",
+    "categoria": "cafe",
+    "nombre": "Mocca",
+    "precio": 5100
+   },
+   {
+    "id": "chocolate",
+    "categoria": "cafe",
+    "nombre": "Chocolate caliente",
+    "precio": 4100
+   },
+   {
+    "id": "v60",
+    "categoria": "cafe",
+    "nombre": "Café filtrado V60",
+    "precio": 4900,
+    "descripcion": "Método V60, para una o para compartir.",
+    "variantes": [
+     {
+      "id": "1",
+      "nombre": "1 taza",
+      "precio": 4900
+     },
+     {
+      "id": "2",
+      "nombre": "2 tazas",
+      "precio": 7500
+     }
+    ]
+   },
+   {
+    "id": "jugo-naranja",
+    "categoria": "frias",
+    "nombre": "Jugo de naranja",
+    "precio": 4000
+   },
+   {
+    "id": "limonada",
+    "categoria": "frias",
+    "nombre": "Limonada",
+    "precio": 3900,
+    "descripcion": "De frutos del bosque y menta.",
+    "foto": "img/f/p-limonada-640.webp"
+   },
+   {
+    "id": "licuados",
+    "categoria": "frias",
+    "nombre": "Licuados",
+    "precio": 5000,
+    "descripcion": "Consultá variedades.",
+    "foto": "img/f/p-licuado-640.webp"
+   },
+   {
+    "id": "espresso-tonic",
+    "categoria": "frias",
+    "nombre": "Espresso tonic",
+    "precio": 4700
+   },
+   {
+    "id": "iced-flat-white",
+    "categoria": "frias",
+    "nombre": "Iced flat white",
+    "precio": 4900,
+    "foto": "img/f/p-iced-640.webp"
+   },
+   {
+    "id": "iced-latte",
+    "categoria": "frias",
+    "nombre": "Iced latte",
+    "precio": 5000
+   },
+   {
+    "id": "iced-americano",
+    "categoria": "frias",
+    "nombre": "Iced americano",
+    "precio": 4200,
+    "foto": "img/f/p-iced-americano-640.webp"
+   },
+   {
+    "id": "iced-caramel",
+    "categoria": "frias",
+    "nombre": "Iced caramel latte",
+    "precio": 5100
+   },
+   {
+    "id": "iced-mocca",
+    "categoria": "frias",
+    "nombre": "Iced mocca",
+    "precio": 5200
+   },
+   {
+    "id": "agua",
+    "categoria": "frias",
+    "nombre": "Agua",
+    "precio": 3000,
+    "descripcion": "Con y sin gas."
+   },
+   {
+    "id": "gaseosa",
+    "categoria": "frias",
+    "nombre": "Gaseosa",
+    "precio": 3200,
+    "descripcion": "Línea Coca-Cola."
+   },
+   {
+    "id": "chipa",
+    "categoria": "salados",
+    "nombre": "Chipá",
+    "precio": 2900
+   },
+   {
+    "id": "chipa-xl",
+    "categoria": "salados",
+    "nombre": "Chipá XL",
+    "precio": 3900
+   },
+   {
+    "id": "chipa-xl-relleno",
+    "categoria": "salados",
+    "nombre": "Chipá XL relleno",
+    "precio": 7700
+   },
+   {
+    "id": "tostado",
+    "categoria": "salados",
+    "nombre": "Tostado",
+    "precio": 7700,
+    "descripcion": "Jamón cocido natural, queso regio en pan de campo tostado con manteca.",
+    "foto": "img/f/p-tostado-640.webp"
+   },
+   {
+    "id": "sandwich-ternera",
+    "categoria": "salados",
+    "nombre": "Sándwich de ternera",
+    "precio": 11500,
+    "descripcion": "Ternera braseada 12 hs, queso provolone, pesto, rúcula y tomate fresco en pan de campo.",
+    "foto": "img/f/p-ternera-640.webp",
+    "etiquetas": [
+     "casa"
+    ]
+   },
+   {
+    "id": "sandwich-focaccia",
+    "categoria": "salados",
+    "nombre": "Sándwich de focaccia",
+    "precio": 10000,
+    "descripcion": "Jamón crudo, queso provolone, queso regio, rúcula y tomate en focaccia. Disponible en opción vegetariana.",
+    "foto": "img/f/p-focaccia-640.webp",
+    "opciones": [
+     {
+      "id": "version",
+      "nombre": "Versión",
+      "valores": [
+       {
+        "id": "clasico",
+        "nombre": "Clásico"
+       },
+       {
+        "id": "veggie",
+        "nombre": "Vegetariano"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "id": "tartas",
+    "categoria": "salados",
+    "nombre": "Tartas",
+    "precio": 8000,
+    "descripcion": "Zapallito, morrón, cebolla y queso · Hongos, queso roquefort y panceta · Caprese.",
+    "foto": "img/f/p-tarta-640.webp",
+    "opciones": [
+     {
+      "id": "sabor",
+      "nombre": "Sabor",
+      "valores": [
+       {
+        "id": "zapallito",
+        "nombre": "Zapallito"
+       },
+       {
+        "id": "hongos",
+        "nombre": "Hongos, roquefort y panceta"
+       },
+       {
+        "id": "caprese",
+        "nombre": "Caprese"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "id": "cookie-brownie",
+    "categoria": "dulces",
+    "nombre": "Cookie brownie",
+    "precio": 3900
+   },
+   {
+    "id": "cookie-avena",
+    "categoria": "dulces",
+    "nombre": "Cookie de avena",
+    "precio": 3900,
+    "descripcion": "Avena, chocolate y frambuesa."
+   },
+   {
+    "id": "roll-canela",
+    "categoria": "dulces",
+    "nombre": "Roll de canela",
+    "precio": 4600,
+    "foto": "img/f/p-roll-640.webp",
+    "etiquetas": [
+     "casa"
+    ]
+   },
+   {
+    "id": "palmerita-xl",
+    "categoria": "dulces",
+    "nombre": "Palmerita XL",
+    "precio": 3600,
+    "foto": "img/f/p-palmerita-640.webp"
+   },
+   {
+    "id": "medialuna",
+    "categoria": "dulces",
+    "nombre": "Medialuna de manteca",
+    "precio": 2700,
+    "foto": "img/f/p-medialunas-640.webp"
+   },
+   {
+    "id": "medialuna-rellena",
+    "categoria": "dulces",
+    "nombre": "Medialuna rellena",
+    "precio": 6000,
+    "descripcion": "Con jamón y queso o queso y tomate.",
+    "opciones": [
+     {
+      "id": "relleno",
+      "nombre": "Relleno",
+      "valores": [
+       {
+        "id": "jyq",
+        "nombre": "Jamón y queso"
+       },
+       {
+        "id": "qyt",
+        "nombre": "Queso y tomate"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "id": "yogur",
+    "categoria": "dulces",
+    "nombre": "Yogur con granola",
+    "precio": 8200,
+    "descripcion": "Con frutas de estación."
+   },
+   {
+    "id": "promo-tarta",
+    "categoria": "promos",
+    "nombre": "Tarta + café",
+    "precio": 14000,
+    "descripcion": "Tarta a elección con un café.",
+    "foto": "img/f/p-tarta-640.webp"
+   },
+   {
+    "id": "promo-huevos",
+    "categoria": "promos",
+    "nombre": "Huevos revueltos + bebida",
+    "precio": 13500,
+    "descripcion": "Huevos revueltos con una bebida."
+   },
+   {
+    "id": "promo-tostadas",
+    "categoria": "promos",
+    "nombre": "Tostadas + bebida",
+    "precio": 10500,
+    "descripcion": "Tostadas con una bebida."
+   },
+   {
+    "id": "promo-medialunas",
+    "categoria": "promos",
+    "nombre": "Café + 2 medialunas",
+    "precio": 9000,
+    "descripcion": "Un café con dos medialunas de manteca.",
+    "foto": "img/f/p-medialunas-640.webp"
+   },
+   {
+    "id": "d-jazz",
+    "categoria": "discos",
+    "nombre": "Jazz",
+    "precio": null,
+    "descripcion": "Del ciclo de los jueves: standards, bebop y algo de modal."
+   },
+   {
+    "id": "d-soul",
+    "categoria": "discos",
+    "nombre": "Soul & funk",
+    "precio": null,
+    "descripcion": "Lo que suena en los DJ sets de los sábados."
+   },
+   {
+    "id": "d-hiphop",
+    "categoria": "discos",
+    "nombre": "Hip hop",
+    "precio": null,
+    "descripcion": "Clásicos en vinilo para la batea."
+   },
+   {
+    "id": "d-rock",
+    "categoria": "discos",
+    "nombre": "Rock",
+    "precio": null,
+    "descripcion": "Nacional e internacional."
+   },
+   {
+    "id": "d-bossa",
+    "categoria": "discos",
+    "nombre": "Bossa & MPB",
+    "precio": null,
+    "descripcion": "Para las tardes de vereda."
+   },
+   {
+    "id": "d-tango",
+    "categoria": "discos",
+    "nombre": "Tango",
+    "precio": null,
+    "descripcion": "Para las fechas patrias en la vereda."
+   }
+  ]
+ },
+ "textos": {
+  "tuPedido": "Tu selección",
+  "verPedido": "Ver tu selección",
+  "agregar": "Sumar",
+  "agregado": "Sumado",
+  "carritoVacio": "Todavía no pusiste nada.",
+  "carritoVacioSub": "Arrancá por la carta: tocá Sumar en lo que quieras.",
+  "pedidoListo": "Quedó sonando."
+ }
+}
