@@ -229,7 +229,7 @@ function itemTpl(p, ctx) {
     ? `<button type="button" class="it__sumar" data-sumar="${esc(p.id)}">Sumar</button>`
     : `<div data-kit-qty="${esc(p.id)}"></div>`;
   const tags = (p.etiquetas || []).map((t) => ctx.etiquetaHTML(t)).join('');
-  return `${p.foto ? `<img class="it__mini" src="${esc(thumb(ctx.asset(p.foto)))}" alt="" width="60" height="60" loading="lazy" decoding="async">` : ''}
+  return `${p.foto ? `<button type="button" class="it__mini-btn" data-ver-foto aria-label="Ver foto de ${esc(p.nombre)}"><img class="it__mini" src="${esc(thumb(ctx.asset(p.foto)))}" alt="" width="60" height="60" loading="lazy" decoding="async"></button>` : ''}
     <div class="it__cuerpo">
       <h3 class="it__nom">${esc(p.nombre)}${tags}${p.foto ? '<span class="it__punto" aria-hidden="true"></span>' : ''}</h3>
       <span class="it__precio" data-it-precio>${esc(precio)}</span>
@@ -332,7 +332,9 @@ const ANG_REPOSO = -26;
 const td = $('[data-tocadiscos]');
 const tdBrazo = $('[data-td-brazo]');
 const tdPistas = $('[data-td-pistas]');
-const tdLabel = $('[data-td-label]');
+const tdLabel = $('[data-td-funda]');
+const tdNom = $('[data-td-nom]');
+const tdPrecio = $('[data-td-precio]');
 const tdFoto = $('[data-td-foto]');
 let cartaEl = null, cats = [], actual = 0;
 
@@ -383,7 +385,7 @@ function armarCarta(el, categorias) {
       ${info.bajada ? `<p class="cc__sub">${esc(info.bajada)}</p>` : ''}`;
     const cont = document.createElement('div');
     cont.className = 'carta-items';
-    items.forEach((it) => { it.classList.toggle('it--foto', !!$('.it__mini', it)); cont.appendChild(it); });
+    items.forEach((it) => { it.classList.toggle('it--foto', !!$('.it__mini-btn', it)); cont.appendChild(it); });
     const nav = document.createElement('div');
     nav.className = 'carta-nav';
     nav.innerHTML = `<button type="button" data-carta-ir="${i - 1}" ${i === 0 ? 'disabled' : ''}>← ${esc(cats[i - 1]?.nombre || '')}</button><button type="button" data-carta-ir="${i + 1}" ${i === cats.length - 1 ? 'disabled' : ''}>${esc(cats[i + 1]?.nombre || '')} →</button>`;
@@ -444,7 +446,7 @@ document.addEventListener('pointerover', (e) => {
     const src = it?.dataset.photo;
     if (it) it.classList.add('foco');
     if (src) {
-      if (src !== fotoAct) { fotoAct = src; tdFoto.src = thumb(src); }
+      if (src !== fotoAct) { fotoAct = src; tdFoto.src = src; tdNom.textContent = $('.it__nom', it)?.childNodes[0]?.textContent?.trim() || ''; tdPrecio.textContent = $('[data-it-precio]', it)?.textContent || ''; }
       tdLabel.classList.add('ver');
     } else tdLabel?.classList.remove('ver');
   });
@@ -587,3 +589,26 @@ if (mazo) {
   mazo.addEventListener('pointerup', fin);
   mazo.addEventListener('pointercancel', () => { if (activo) { activo.classList.remove('arrastra'); activo.style.transform = ''; activo = null; } });
 }
+
+/* foto grande del plato (toque en la miniatura) */
+const pop = $('[data-foto-pop]');
+let scrollPop = 0;
+function abrirFoto(it) {
+  if (!pop || !it?.dataset.photo) return;
+  $('[data-foto-img]', pop).src = it.dataset.photo;
+  $('[data-foto-nom]', pop).textContent = $('.it__nom', it)?.childNodes[0]?.textContent?.trim() || '';
+  $('[data-foto-precio]', pop).textContent = $('[data-it-precio]', it)?.textContent || '';
+  scrollPop = scrollY; pop.hidden = false; html.classList.add('pop-abierto');
+  document.body.style.cssText = `position:fixed;top:-${scrollPop}px;left:0;right:0`;
+  $('.foto-pop__x', pop).focus({ preventScroll: true });
+}
+function cerrarFoto() {
+  if (!pop || pop.hidden) return;
+  pop.hidden = true; html.classList.remove('pop-abierto'); document.body.style.cssText = '';
+  html.style.scrollBehavior = 'auto'; scrollTo(0, scrollPop); html.style.scrollBehavior = '';
+}
+document.addEventListener('click', (e) => {
+  const v = e.target.closest('[data-ver-foto]'); if (v) { abrirFoto(v.closest('.kit-item')); return; }
+  if (e.target.closest('[data-foto-cerrar]')) cerrarFoto();
+});
+addEventListener('keydown', (e) => { if (e.key === 'Escape') cerrarFoto(); });

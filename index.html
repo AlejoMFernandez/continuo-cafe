@@ -38,7 +38,7 @@
 <link rel="preload" as="image" imagesrcset="img/f/hero-biblio-cel-600.webp 600w" imagesizes="270px" media="(max-width: 899px)">
 <link rel="preload" as="image" imagesrcset="img/f/hero-biblio-560.webp 560w, img/f/hero-biblio-1000.webp 1000w" imagesizes="500px" media="(min-width: 900px)">
 <link rel="stylesheet" href="kit/kit.css?v=1">
-<link rel="stylesheet" href="css/estilos.css?v=1">
+<link rel="stylesheet" href="css/estilos.css?v=2">
 </head>
 <body>
 
@@ -171,10 +171,11 @@
               <img src="img/vinilo.svg" alt="" width="1000" height="1000" loading="lazy" decoding="async" draggable="false">
             </div>
             <img class="td__brillo" src="img/vinilo-brillo.svg" alt="" width="1000" height="1000" draggable="false">
-            <div class="td__label" data-td-label aria-hidden="true">
-              <img alt="" data-td-foto width="240" height="240" draggable="false">
-            </div>
           </div>
+          <figure class="td__funda" data-td-funda aria-hidden="true">
+            <img alt="" data-td-foto width="640" height="640" draggable="false">
+            <figcaption><span data-td-nom></span><b data-td-precio></b></figcaption>
+          </figure>
           <div class="td__brazo" data-td-brazo role="slider" tabindex="0" aria-label="Brazo del tocadiscos: elegí la pista" aria-valuemin="1" aria-valuemax="4" aria-valuenow="1">
             <img src="img/brazo.svg" alt="" width="300" height="640" draggable="false">
           </div>
@@ -234,7 +235,7 @@
       <h2 class="sec__t" id="batea-t"><span class="m"><span>Discos que</span></span> <span class="m"><span><em>buscan casa</em></span></span></h2>
       <span class="sec__linea" aria-hidden="true"></span>
       <p class="sec__sub">Vendemos una parte de la colección. Pasá las fundas, separá el que te guste y lo retirás en el local.</p>
-      <figure class="batea__foto"><img src="img/f/batea-640.webp" alt="La batea de vinilos de Continuo" width="640" height="432" loading="lazy" decoding="async"></figure>
+      <figure class="batea__foto"><img src="img/f/discos-rojos-700.webp" srcset="img/f/discos-rojos-700.webp 700w, img/f/discos-rojos-1170.webp 1170w" sizes="340px" alt="7 discos rojos, una selección de Continuo" width="700" height="700" loading="lazy" decoding="async"></figure>
     </header>
     <div class="batea__caja rv">
       <div id="batea-kit" class="batea-kit" data-kit="carta" data-kit-tienda="true" data-arrastre></div>
@@ -301,6 +302,15 @@
 
 </main>
 
+<div class="foto-pop" data-foto-pop hidden role="dialog" aria-modal="true" aria-label="Foto del plato">
+  <div class="foto-pop__fondo" data-foto-cerrar></div>
+  <div class="foto-pop__caja">
+    <button type="button" class="foto-pop__x" data-foto-cerrar aria-label="Cerrar foto"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    <img alt="" data-foto-img width="640" height="640">
+    <div class="foto-pop__pie"><strong data-foto-nom></strong><span data-foto-precio></span></div>
+  </div>
+</div>
+
 <!-- ============ FOOTER ============ -->
 <footer class="pie">
   <div class="cont">
@@ -315,6 +325,6 @@
   </div>
 </footer>
 
-<script type="module" src="js/main.js?v=1"></script>
+<script type="module" src="js/main.js?v=2"></script>
 </body>
 </html>
